@@ -143,6 +143,3 @@ elseif(APPLE)
 else()
   set(CPACK_GENERATOR "TGZ;DEB")
 endif()
-
-add_subdirectory(src)
-add_subdirectory(tests)
