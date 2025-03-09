@@ -1,0 +1,201 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Clean Build",
+        "type": "shell",
+        "windows": {
+          "command": "if exist ${workspaceFolder}\\build (cmake --build ${workspaceFolder}\\build --target clean) && cmake --build ${workspaceFolder}\\build"
+        },
+        "linux": {
+          "command": "cmake --build ${workspaceFolder}/build --target clean && cmake --build ${workspaceFolder}/build"
+        },
+        "osx": {
+          "command": "cmake --build ${workspaceFolder}/build --target clean && cmake --build ${workspaceFolder}/build"
+        },
+        "group": "build",
+        "problemMatcher": [
+          "$gcc",
+          "$msCompile"
+        ],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Build Debug",
+        "type": "shell",
+        "windows": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build"
+        },
+        "linux": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
+        },
+        "osx": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
+        },
+        "group": {
+          "kind": "build"
+        },
+        "problemMatcher": [
+          "$gcc",
+          "$msCompile"
+        ],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Build Release",
+        "type": "shell",
+        "windows": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build"
+        },
+        "linux": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
+        },
+        "osx": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
+        },
+        "group": "build",
+        "problemMatcher": [
+          "$gcc",
+          "$msCompile"
+        ],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Run",
+        "type": "shell",
+        "windows": {
+          "command": "if not exist ${workspaceFolder}\\build\\bin\\${workspaceFolderBasename}.exe (cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build) && ${workspaceFolder}\\build\\bin\\${workspaceFolderBasename}.exe"
+        },
+        "linux": {
+          "command": "if [ ! -f \"${workspaceFolder}/build/bin/${workspaceFolderBasename}\" ]; then cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build; fi && ${workspaceFolder}/build/bin/${workspaceFolderBasename}"
+        },
+        "osx": {
+          "command": "if [ ! -f \"${workspaceFolder}/build/bin/${workspaceFolderBasename}\" ]; then cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build; fi && ${workspaceFolder}/build/bin/${workspaceFolderBasename}"
+        },
+        "group": "build",
+        "dependsOn": [],
+        "problemMatcher": [],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Test",
+        "type": "shell",
+        "windows": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build --target ${workspaceFolderBasename}_tests && cd ${workspaceFolder}\\build && ctest -V"
+        },
+        "linux": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build --target ${workspaceFolderBasename}_tests && cd ${workspaceFolder}/build && ctest -V"
+        },
+        "osx": {
+          "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build --target ${workspaceFolderBasename}_tests && cd ${workspaceFolder}/build && ctest -V"
+        },
+        "group": "test",
+        "problemMatcher": [
+          "$gcc",
+          "$msCompile"
+        ],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Configure CMake",
+        "type": "shell",
+        "windows": {
+          "command": "cmake -G Ninja -S ${workspaceFolder} -B ${workspaceFolder}\\build"
+        },
+        "linux": {
+          "command": "cmake -G Ninja -S ${workspaceFolder} -B ${workspaceFolder}/build"
+        },
+        "osx": {
+          "command": "cmake -G Ninja -S ${workspaceFolder} -B ${workspaceFolder}/build"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "label": "Generate Documentation",
+        "type": "shell",
+        "windows": {
+          "command": "cmake --build ${workspaceFolder}\\build --target docs"
+        },
+        "linux": {
+          "command": "cmake --build ${workspaceFolder}/build --target docs"
+        },
+        "osx": {
+          "command": "cmake --build ${workspaceFolder}/build --target docs"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true
+        }
+      },
+      {
+        "type": "cmake",
+        "label": "CMake: build",
+        "command": "build",
+        "targets": [
+          "[N/A - Select Kit]"
+        ],
+        "group": "build",
+        "problemMatcher": [],
+        "detail": "CMake template build task"
+      },
+      {
+        "type": "cmake",
+        "label": "CMake: build",
+        "command": "build",
+        "targets": [
+          "[N/A - Select Kit]"
+        ],
+        "group": "build",
+        "problemMatcher": [],
+        "detail": "CMake template build task"
+      }
+    ]
+  }

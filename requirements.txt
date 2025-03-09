@@ -1,0 +1,17 @@
+# General Requirements
+cmake>=3.15
+gtest>=1.10.0  # For testing
+doxygen>=1.9.1 # For documentation
+
+# Code Quality Tools
+clang-format>=13.0.0
+clang-tidy>=13.0.0
+cppcheck>=2.6
+
+# Project-Specific Requirements
+# [Replace or add dependencies specific to your project]
+# Examples:
+# boost>=1.75.0
+# eigen>=3.4.0
+# opencv>=4.5.5
+# nlohmann_json>=3.10.5

@@ -1,0 +1,59 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+install/
+
+# IDE files
+.vscode/.ropeproject/
+.idea/
+*.swp
+*~
+.vs/
+*.user
+*.suo
+*.db
+*.opendb
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Generated documentation
+docs/html/
+docs/latex/
+
+# Dependency directories
+external/*/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
