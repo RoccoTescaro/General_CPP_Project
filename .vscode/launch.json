@@ -14,19 +14,27 @@
       "windows": {
         "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}.exe",
         "type": "cppvsdbg",
-        "console": "integratedTerminal"
+        "console": "integratedTerminal",
+        "miDebuggerPath": "gdb.exe"
       },
       "osx": {
-        "MIMode": "lldb"
+        "MIMode": "lldb",
+        "miDebuggerPath": "/usr/bin/lldb"
       },
       "linux": {
-        "MIMode": "gdb"
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb"
       },
       "preLaunchTask": "Build Debug",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set disassembly flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
           "ignoreFailures": true
         }
       ]
@@ -44,13 +52,16 @@
       "windows": {
         "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests.exe",
         "type": "cppvsdbg",
-        "console": "integratedTerminal"
+        "console": "integratedTerminal",
+        "miDebuggerPath": "gdb.exe"
       },
       "osx": {
-        "MIMode": "lldb"
+        "MIMode": "lldb",
+        "miDebuggerPath": "/usr/bin/lldb"
       },
       "linux": {
-        "MIMode": "gdb"
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb"
       },
       "preLaunchTask": "Build Debug",
       "setupCommands": [
@@ -58,7 +69,43 @@
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
+        },
+        {
+          "description": "Set disassembly flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
         }
+      ]
+    },
+    {
+      "name": "Run Without Debugging",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "windows": {
+        "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}.exe",
+        "type": "cppvsdbg"
+      },
+      "osx": {
+        "MIMode": "lldb"
+      },
+      "linux": {
+        "MIMode": "gdb"
+      },
+      "preLaunchTask": "Build Release"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Build and Debug All",
+      "configurations": [
+        "Debug (Build and Launch)",
+        "Debug Tests"
       ]
     }
   ]

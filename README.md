@@ -12,6 +12,7 @@ project_name/                  # Root directory (automatically takes folder name
 │   ├── launch.json            # Debugger configuration
 │   └── keybindings.json       # Custom key mappings
 ├── src/                       # Source files
+│   ├── CMakeLists.txt         # Source CMake configuration
 │   ├── main.cpp               # Entry point
 │   └── ...                    # Other source files
 ├── include/                   # Header files
@@ -19,6 +20,7 @@ project_name/                  # Root directory (automatically takes folder name
 │   │   └── ...
 │   └── ...                    # Other headers
 ├── tests/                     # Test files
+│   ├── CMakeLists.txt         # Test CMake configuration
 │   ├── test_main.cpp          # Test entry point
 │   └── ...                    # Test files
 ├── external/                  # External dependencies (git submodules, etc.)

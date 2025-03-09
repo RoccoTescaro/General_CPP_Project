@@ -54,50 +54,19 @@ endif()
 # Include directories with platform-specific path handling
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# Collect source files with platform-specific path patterns
-if(WIN32)
-  file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
-  file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
-else()
-  file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
-  file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
-endif()
+# Define project name as a preprocessor macro
+add_compile_definitions(PROJECT_NAME="${PROJECT_NAME}")
 
-# Add executable with platform-specific extension
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+# Add subdirectories
+add_subdirectory(src)
 
 # Enable testing
 enable_testing()
 
-# GoogleTest (using FetchContent for easy integration)
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.13.0
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-# Collect test files
-if(WIN32)
-  file(GLOB_RECURSE TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
-else()
-  file(GLOB_RECURSE TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
-endif()
-
-# Add test executable
-if(TEST_SOURCES)
-  add_executable(${PROJECT_NAME}_tests ${TEST_SOURCES})
-  target_link_libraries(${PROJECT_NAME}_tests gtest gtest_main)
-  
-  # Add test with platform-specific command
-  add_test(NAME ${PROJECT_NAME}_tests COMMAND ${PROJECT_NAME}_tests)
-endif()
+# Add test subdirectory
+add_subdirectory(tests)
 
 # Documentation with Doxygen
 find_package(Doxygen)
@@ -150,11 +119,6 @@ else()
   )
 endif()
 
-# Define project name as a preprocessor macro
-target_compile_definitions(${PROJECT_NAME} PRIVATE
-  PROJECT_NAME="${PROJECT_NAME}"
-)
-
 # Custom target for clean build
 add_custom_target(clean_build
   COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target clean
@@ -180,5 +144,5 @@ else()
   set(CPACK_GENERATOR "TGZ;DEB")
 endif()
 
-# Additional project-specific targets and configurations
-# [Add your custom targets and configurations here]
+add_subdirectory(src)
+add_subdirectory(tests)

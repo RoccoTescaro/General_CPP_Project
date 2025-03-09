@@ -1,42 +1,59 @@
 {
-    "files.associations": {
-      "*.h": "cpp",
-      "*.hpp": "cpp",
-      "*.cpp": "cpp",
-      "CMakeLists.txt": "cmake"
-    },
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "C_Cpp.clang_format_style": "file",
-    "C_Cpp.clang_format_fallbackStyle": "Google",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "C_Cpp.default.includePath": [
-      "${workspaceFolder}/include",
-      "${workspaceFolder}/src"
-    ],
-    "C_Cpp.default.cppStandard": "c++17",
-    "C_Cpp.default.intelliSenseMode": "${default}",
-    "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceFolder}/build",
-    "cmake.installPrefix": "${workspaceFolder}/install",
-    "cmake.generator": "Ninja",
-    "cmake.configureArgs": [
-      "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-    ],
-    "cmake.buildArgs": [
-      "-j8"
-    ],
-    "cmake.parallelJobs": 8,
-    "cmake.debugConfig": {
-      "stopAtEntry": true,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "${default}"
-    },
-    // Platform specific settings
-    "files.eol": "\n", // Use LF line endings by default
-    "[batch]": {
-      "files.eol": "\r\n" // Use CRLF for batch files
-    }
+  "files.associations": {
+    "*.h": "cpp",
+    "*.hpp": "cpp",
+    "*.cpp": "cpp",
+    "CMakeLists.txt": "cmake"
+  },
+  "editor.formatOnSave": true,
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  // Enhanced IntelliSense configuration
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/include",
+    "${workspaceFolder}/src",
+    "${default}"
+  ],
+  "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.default.intelliSenseMode": "${default}",
+  "C_Cpp.intelliSenseEngineFallback": "enabled",
+  "C_Cpp.autocomplete": "default",
+  "C_Cpp.default.compilerPath": "${default}",
+  // CMake settings
+  "cmake.configureOnOpen": true,
+  "cmake.buildDirectory": "${workspaceFolder}/build",
+  "cmake.installPrefix": "${workspaceFolder}/install",
+  "cmake.generator": "Ninja",
+  "cmake.configureArgs": [
+    "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+  ],
+  "cmake.buildArgs": [
+    "-j8"
+  ],
+  "cmake.parallelJobs": 8,
+  "cmake.configureSettings": {
+    "CMAKE_CXX_STANDARD": "17"
+  },
+  "cmake.debugConfig": {
+    "stopAtEntry": true,
+    "cwd": "${workspaceFolder}",
+    "environment": [],
+    "externalConsole": false,
+    "MIMode": "${default}"
+  },
+  // Optional integration with clangd
+  "clangd.arguments": [
+    "--background-index",
+    "--clang-tidy",
+    "--completion-style=detailed",
+    "--header-insertion=iwyu",
+    "--suggest-missing-includes",
+    "--compile-commands-dir=${workspaceFolder}/build"
+  ],
+  // Platform specific settings
+  "files.eol": "\n", // Use LF line endings by default
+  "[batch]": {
+    "files.eol": "\r\n" // Use CRLF for batch files
   }
+}

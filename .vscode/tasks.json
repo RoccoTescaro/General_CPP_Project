@@ -14,7 +14,8 @@
         "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
       },
       "group": {
-        "kind": "build"
+        "kind": "build",
+        "isDefault": true
       },
       "problemMatcher": [
         "$gcc",
@@ -81,7 +82,7 @@
       "label": "Clean Build",
       "type": "shell",
       "windows": {
-        "command": "if exist ${workspaceFolder}\\build (cmake --build ${workspaceFolder}\\build --target clean) && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build"
+        "command": "if exist ${workspaceFolder}\\build (rmdir /s /q ${workspaceFolder}\\build) && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build"
       },
       "linux": {
         "command": "rm -rf ${workspaceFolder}/build && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build"
@@ -107,11 +108,29 @@
       "osx": {
         "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build --target ${workspaceFolderBasename}_tests && ${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests"
       },
-      "group": "test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
       "problemMatcher": [
         "$gcc",
         "$msCompile"
       ]
+    },
+    {
+      "label": "Generate Documentation",
+      "type": "shell",
+      "windows": {
+        "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}\\build && cmake --build ${workspaceFolder}\\build --target docs"
+      },
+      "linux": {
+        "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build --target docs"
+      },
+      "osx": {
+        "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S ${workspaceFolder} -B ${workspaceFolder}/build && cmake --build ${workspaceFolder}/build --target docs"
+      },
+      "group": "build",
+      "problemMatcher": []
     }
   ]
 }
