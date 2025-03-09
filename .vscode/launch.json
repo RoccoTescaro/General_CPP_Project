@@ -1,65 +1,65 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Debug Main",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${workspaceFolder}",
-        "environment": [],
-        "externalConsole": false,
-        "windows": {
-          "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}.exe",
-          "type": "cppvsdbg",
-          "console": "integratedTerminal"
-        },
-        "osx": {
-          "MIMode": "lldb"
-        },
-        "linux": {
-          "MIMode": "gdb"
-        },
-        "preLaunchTask": "Build Debug",
-        "setupCommands": [
-          {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-          }
-        ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug (Build and Launch)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "windows": {
+        "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}.exe",
+        "type": "cppvsdbg",
+        "console": "integratedTerminal"
       },
-      {
-        "name": "Debug Tests",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${workspaceFolder}",
-        "environment": [],
-        "externalConsole": false,
-        "windows": {
-          "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests.exe",
-          "type": "cppvsdbg",
-          "console": "integratedTerminal"
-        },
-        "osx": {
-          "MIMode": "lldb"
-        },
-        "linux": {
-          "MIMode": "gdb"
-        },
-        "preLaunchTask": "Build Debug",
-        "setupCommands": [
-          {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-          }
-        ]
-      }
-    ]
-  }
+      "osx": {
+        "MIMode": "lldb"
+      },
+      "linux": {
+        "MIMode": "gdb"
+      },
+      "preLaunchTask": "Build Debug",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug Tests",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "windows": {
+        "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}_tests.exe",
+        "type": "cppvsdbg",
+        "console": "integratedTerminal"
+      },
+      "osx": {
+        "MIMode": "lldb"
+      },
+      "linux": {
+        "MIMode": "gdb"
+      },
+      "preLaunchTask": "Build Debug",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

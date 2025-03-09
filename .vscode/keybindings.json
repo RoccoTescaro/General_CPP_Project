@@ -1,5 +1,4 @@
 {
     "key": "ctrl+shift+b",
-    "command": "workbench.action.tasks.runTask",
-    "args": ""
-  }
+    "command": "workbench.action.tasks.runTask"
+}
